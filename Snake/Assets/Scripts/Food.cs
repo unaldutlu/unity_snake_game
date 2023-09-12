@@ -1,14 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Food : MonoBehaviour
 {
     public BoxCollider2D foodSpawn;
 
+    public float score;
+    public TextMeshProUGUI scoreText;
+
     private void Start()
     {
         RandomPose();
+    }
+
+
+    private void Update()
+    {
+        scoreText.text = "" + score;
     }
 
     private void RandomPose()
@@ -25,6 +35,7 @@ public class Food : MonoBehaviour
         if (collision.gameObject.tag== "Player")
         {
             RandomPose();
+            score += 1;
         }
     }
 }
